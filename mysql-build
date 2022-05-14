@@ -1,1 +1,3 @@
-docker build --no-cache -m 2g --memory-swap 4g -t phx.ocir.io/axmvl4uui9gb/oracle/mysql-server:latest -f Dockerfile .
+#!/usr/bin/env bash
+
+sudo podman build --no-cache -m 2g --memory-swap 4g -t phx.ocir.io/axmvl4uui9gb/oracle/mysql-server:latest -f Dockerfile .
