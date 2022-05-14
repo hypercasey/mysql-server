@@ -1,0 +1,18 @@
+services:
+  mysql:
+    build: .
+    ports:
+      - "2222:22/tcp"
+      - "3306:3306/tcp"
+      - "33060:33060/tcp"
+      - "33061:33061/tcp"
+    mem_limit: 2G
+    mem_reservation: 512M
+    memswap_limit: 2G
+    image: container-registry.oracle.com/os/oraclelinux:8-slim
+    restart: always
+    cap_add:
+      - SYS_NICE
+      - SYS_RESOURCE
+      - NET_ADMIN
+      - AUDIT_WRITE

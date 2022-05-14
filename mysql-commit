@@ -1,0 +1,1 @@
+docker commit -a "HyperSpire LLC" -a "Casey Comendant casey@hyperspire.com" mysql-server localhost/oraclelinux/mysql:latest" > docker-commit
