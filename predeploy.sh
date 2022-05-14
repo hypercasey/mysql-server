@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 
 cp -vf ~/Projects/mysql-server/Dockerfile ~/hyperstor/mysql-server/
 cp -vf ~/Projects/mysql-server/docker-compose.yml ~/hyperstor/mysql-server/
