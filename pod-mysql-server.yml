@@ -11,6 +11,9 @@ spec:
       imagePullPolicy: Never
       name: mysql-server
       ports:
+        - containerPort: 22
+          protocol: TCP
+          name: opensshd
         - containerPort: 3306
           protocol: TCP
           name: mysql
