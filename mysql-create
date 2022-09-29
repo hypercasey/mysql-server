@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+sudo podman create --cap-add SYS_NICE --cap-add SYS_RESOURCE --cap-add NET_ADMIN --cap-add AUDIT_WRITE -i -t -m 2g --memory-reservation 512m --memory-swap 4g -p 2222:22 -p 3306:3306 -p 33060:33060 -p 33061:33061 --name mysql-server container-registry.oracle.com/os/oraclelinux:8-slim

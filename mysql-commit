@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+sudo podman commit "Casey Comendant (HyperSpire LLC) casey@hyperspire.com" mysql-server localhost/oraclelinux/mysql:latest"
