@@ -1,1 +1,8 @@
-docker build --no-cache -m 2g --memory-swap 4g -t phx.ocir.io/axmvl4uui9gb/oracle/mysql-server:latest -f Dockerfile .
+#!/usr/bin/bash
+source "$HOME/Defaults" || exit 1
+
+sudo "${CE_EXEC}" login -u "${REPOUSER}" -p "${REPOPASS}" "${ENDPOINT}" &>/dev/null
+
+sudo podman build --format docker --no-cache --cap-add SYS_NICE,SYS_RESOURCE,NET_ADMIN,AUDIT_WRITE -m 2g --memory-swap 4g -t "${REPO}/oracle/mysql-server:latest" -f Dockerfile .
+
+[[ $* == "-p" ]] && sudo podman push "${REPO}/oracle/mysql-server:latest"
