@@ -9,7 +9,7 @@ services:
     mem_limit: 2G
     mem_reservation: 512M
     memswap_limit: 2G
-    image: container-registry.oracle.com/os/oraclelinux:8-slim
+    image: container-registry.oracle.com/os/oraclelinux:9-slim
     restart: always
     cap_add:
       - SYS_NICE
