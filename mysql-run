@@ -1,0 +1,12 @@
+#!/usr/bin/bash
+source "$HOME/Defaults" || exit 1
+
+sudo "${CE_EXEC}" login -u "${REPOUSER}" -p "${REPOPASS}" "${ENDPOINT}" &>/dev/null
+
+# STDIN: Assign a non-default image name from STDIN.
+[[ $* ]] && sudo podman run --replace --name mysql-server --restart unless-stopped -p 2222:22,3306:3306,33060:33060,33061:33061 -m 2g --memory-swap 4g --memory-reservation 2g --cap-add=SYS_NICE,SYS_RESOURCE,NET_ADMIN,AUDIT_WRITE -d "$*"
+
+# No STDIN: Assign default image name instead.
+[[ ! $* ]] && sudo podman run --replace --name mysql-server --restart unless-stopped -p 2222:22,3306:3306,33060:33060,33061:33061 -m 2g --memory-swap 4g --memory-reservation 2g --cap-add=SYS_NICE,SYS_RESOURCE,NET_ADMIN,AUDIT_WRITE -d "${REPO}/oracle/mysql-server:latest"
+
+[[ $(sudo podman ps | grep mysql-server) ]] || sudo podman logs mysql-server | grep MYSQL_ROOT_PASSWORD || echo 'Container "mysql-server" failed to start.' $(sudo podman logs mysql-server)
