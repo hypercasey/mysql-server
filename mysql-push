@@ -1,0 +1,6 @@
+#!/usr/bin/bash
+source "$HOME/Defaults" || exit 1
+
+sudo "${CE_EXEC}" login -u "${REPOUSER}" -p "${REPOPASS}" "${ENDPOINT}" &>/dev/null
+
+sudo podman push "${REPO}/oracle/mysql-server:latest"
