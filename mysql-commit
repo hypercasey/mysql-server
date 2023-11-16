@@ -1,3 +1,6 @@
-#!/usr/bin/env bash
+#!/usr/bin/bash
+source "$HOME/Defaults" || exit 1
 
-sudo podman commit "Casey Comendant (HyperSpire LLC) casey@hyperspire.com" mysql-server localhost/oraclelinux/mysql:latest"
+sudo "${CE_EXEC}" login -u "${REPOUSER}" -p "${REPOPASS}" "${ENDPOINT}" &>/dev/null
+
+sudo podman commit -a "HyperSpire Foundation" -p -f docker mysql-server "${REPO}/oracle/mysql-server:latest"
